@@ -86,15 +86,8 @@ const App = () => {
         />
         <Drawer.Screen 
           name="CartScreen" 
-          component={CheckOutPage} 
-          options={{ 
-            headerRight: () => (
-              <Image
-                source={require('./assets/Images/Search.png')}
-                style={{ width: 30, height: 30, marginRight: 10 }}
-              />
-            )
-          }} 
+          component={CheckOutPage}  
+          options={{ headerShown: false }}
         />
         <Drawer.Screen 
           name='ProductDetailsScreen'
