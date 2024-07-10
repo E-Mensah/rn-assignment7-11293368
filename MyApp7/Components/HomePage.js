@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { View, Text, Button } from 'react-native';
 
-const HomePage = () => {
+const HomePage = ({ navigation }) => {
   return (
-    <View>
-      
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button title="Go to Cart" onPress={() => navigation.navigate('CartScreen')} />
     </View>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
+
