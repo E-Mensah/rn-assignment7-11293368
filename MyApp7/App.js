@@ -49,7 +49,7 @@ const App = () => {
         screenOptions={({ navigation }) => ({
           headerTitle: () => <CustomHeaderTitle navigation={navigation} />,
           headerStyle: {
-            height: 110, 
+            height: 100, 
           },
           headerTitleAlign: 'center', 
           headerLeft: () => (
@@ -71,13 +71,13 @@ const App = () => {
                 <TouchableOpacity>
                   <Image
                     source={require('./assets/Images/Search.png')}
-                    style={{ width: 30, height: 30, marginRight: 10 }}
+                    style={{ width: 30, height: 30, marginRight: 17 }}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate('CartScreen')}>
                   <Image
                     source={require('./assets/Images/shoppingBag.png')}
-                    style={{ width: 30, height: 30, marginRight: 10 }}
+                    style={{ width: 30, height: 30, marginRight: 20 }}
                   />
                 </TouchableOpacity>
               </View>

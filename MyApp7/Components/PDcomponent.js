@@ -3,24 +3,9 @@ import { View, Text, Image, ScrollView } from 'react-native'
 
 const PDcomponent = () => {
   return (
-    <ScrollView style={{width: 390}}>
+    <View style={{width: 390}}>
         <View style={{alignItems: 'center',}}>
-            <View style={{marginBottom: 25, justifyContent: 'center', alignItems: 'center',}}>
-                <Image source={require('../assets/Images/dress1.png')} style={{width: 340, height: 400,}}/>
-            </View>
-            <View style={{flexDirection: 'column', width: 320}}>
-                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6}}>
-                    <Text style={{textAlign: 'left', fontWeight: '600', letterSpacing: 5, fontSize: 18}}>LAMEREI</Text>
-                    <View style={{justifyContent:'center', alignItems:'center', width: 15, height:15}}>
-                        <Image source={require('../assets/Pics/Export.png')} style={{width:15, height:15, objectFit: 'contain'}} />
-                    </View>
-                </View>
-                <Text style={{textAlign: 'left', fontWeight: '400', fontSize: 14, letterSpacing: 0, marginBottom: 5}}>
-                    Recycle Boucle Knit Cardigan Pink
-                </Text>
-                <Text style={{textAlign: 'left', color: '#F88379', fontWeight: '500', fontSize: 20, marginBottom: 25}}>
-                    $ 120
-                </Text>
+            <View style={{flexDirection: 'column', width: 335}}>
                 <Text style={{fontWeight: '500', fontSize: 16, letterSpacing: 1, }}>MATERIALS </Text>
                 <Text style={{width: 305, fontSize: 15, marginBottom: 20}}>
                     We  work  with  monitoring  programmes  to  ensure  compliance  with  safety,  health  and  quality  standards  for  our  products.
@@ -60,7 +45,7 @@ const PDcomponent = () => {
                 </View>
             </View>
         </View>
-    </ScrollView>
+    </View>
   )
 }
 

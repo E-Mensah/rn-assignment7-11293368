@@ -1,10 +1,12 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import PDcomponent from "./PDcomponent";
+import React from 'react';
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import PDcomponent from './PDcomponent';
 import { StatusBar } from 'expo-status-bar';
 import { FontAwesome } from '@expo/vector-icons';
 
-const ProductDetailScreen = () => {
+const ProductDetailScreen = ({ route }) => {
+  const { product } = route.params;
+
   return (
     <View
       style={{
@@ -19,7 +21,35 @@ const ProductDetailScreen = () => {
     <StatusBar backgroundColor="white" barStyle="light-content" translucent={false} />    
       <View>
         <View style={{ flex: 1 }}>
-          <PDcomponent />
+      <ScrollView style={{paddingTop: 5}}>
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <View>
+          <Image source={product.productImage} style={{
+            width: 340,
+            height: 380,
+            marginBottom: 16,
+            objectFit: 'fill'
+          }}/>
+        </View>
+        <View style={{width: 340}}>
+          <Text style={{
+            textAlign: 'left', fontWeight: '500', letterSpacing: 2, fontSize: 18, textAlign: 'left',
+          }}>{product.productName}</Text>
+          <Text style={{
+            fontSize: 16,
+            textAlign: 'left',
+            marginBottom: 8,
+          }}>{product.description}</Text>
+          <Text style={{
+            fontSize: 20,
+            color: '#F88379',
+            marginBottom: 16,
+            textAlign: 'left',
+          }}>${product.productPrice}</Text>
+        </View>
+      </View>
+      <PDcomponent />
+    </ScrollView>
         </View>
         <View>
           <View
