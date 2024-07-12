@@ -47,9 +47,10 @@ const App = () => {
         initialRouteName="HomeScreen" 
         drawerContent={props => <CustomDrawerContent {...props} />}
         screenOptions={({ navigation }) => ({
+          gestureEnabled: true,
           headerTitle: () => <CustomHeaderTitle navigation={navigation} />,
           headerStyle: {
-            height: 100, 
+            height: 70, 
           },
           headerTitleAlign: 'center', 
           headerLeft: () => (

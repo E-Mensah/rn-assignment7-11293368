@@ -32,9 +32,12 @@ const ProductDetailScreen = ({ route }) => {
           }}/>
         </View>
         <View style={{width: 340}}>
+          <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
           <Text style={{
             textAlign: 'left', fontWeight: '500', letterSpacing: 2, fontSize: 18, textAlign: 'left',
           }}>{product.productName}</Text>
+          <Image source={require('../assets/Pics/Export.png')} style={{width: 30, height: 20, objectFit: 'contain'}}/>
+          </View>
           <Text style={{
             fontSize: 16,
             textAlign: 'left',

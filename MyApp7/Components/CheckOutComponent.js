@@ -20,50 +20,55 @@ const CheckOutComponent = ({ setTotalSum }) => {
     }
   };
 
+  useEffect(() => {
+    fetchCheckoutItems();
+  }, []);
+
   useFocusEffect(
     React.useCallback(() => {
       fetchCheckoutItems();
     }, [])
   );
 
-  const removeFromCheckout = async (itemToRemove) => {
+  const removeFromCheckout = async (itemId) => {
     try {
-      const updatedItems = checkoutItems.filter(item => item.id !== itemToRemove.id);
+      const updatedItems = checkoutItems.filter(item => item.id !== itemId);
       setCheckoutItems(updatedItems);
       await AsyncStorage.setItem('checkoutItems', JSON.stringify(updatedItems));
       const total = updatedItems.reduce((sum, item) => sum + item.productPrice, 0);
       setTotalSum(total);
-      console.log('Item removed from checkout:', itemToRemove);
-      Alert.alert('Alert', 'Item successfully removed from cart');
+      Alert.alert('Alert', 'Item removed from cart');
     } catch (error) {
       console.error('Error removing item from checkout', error);
     }
   };
 
   return (
-    <ScrollView>
-      <View style={{ paddingRight: 20, gap: 30, marginBottom: 50 }}>
-        {checkoutItems.map((item) => (
-          <View key={item.id} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', width: 380 }}>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-              <Image source={item.productImage} style={{ height: 130, objectFit: 'contain' }} />
+    
+      <ScrollView>
+        <View style={{ paddingLeft: 20, gap: 20, marginBottom: 20}}>
+          {checkoutItems.map(item => (
+            <View key={item.id} style={{  flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', width: 380, gap: 15 }}>
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>  
+                  <Image source={item.productImage} style={{ width: 90, height: 120 }} />
+                </View>
+                <View style={{ flexDirection: 'column' }}>
+                  <View style={{ marginTop: 20 }}>
+                    <Text style={{ fontSize: 16, fontWeight: '400' }}>{item.productName}</Text>
+                    <Text style={{ fontSize: 14, fontWeight: '400', width: 240 }}>{item.description}</Text>
+                    <Text style={{ color: '#F88379', fontSize: 15, fontWeight: '500' }}>${item.productPrice}</Text>
+                  </View>
+                  <View style={{ width: 25, height: 25, borderRadius: 14, alignItems: 'center', alignSelf: 'flex-end', }}>
+                    <TouchableOpacity onPress={() => removeFromCheckout(item.id)}>
+                      <Image source={require('../assets/Images/remove.png')} style={{ width: 20, height: 20, objectFit: 'contain' }} />
+                    </TouchableOpacity>
+                  </View>
+                </View>
             </View>
-            <View style={{ flexDirection: 'column' }}>
-              <View style={{ marginTop: 20 }}>
-                <Text style={{ fontSize: 17, fontWeight: '400', marginBottom: 6 }}>{item.productName}</Text>
-                <Text style={{ fontSize: 16, fontWeight: '400', marginBottom: 4 }}>{item.description}</Text>
-                <Text style={{ color: '#F88379', fontSize: 18, fontWeight: '500' }}>${item.productPrice}</Text>
-              </View>
-              <View style={{ width: 25, height: 25, borderRadius: 14, alignItems: 'center', alignSelf: 'flex-end', marginTop: 5 }}>
-                <TouchableOpacity onPress={() => removeFromCheckout(item)}>
-                  <Image source={require('../assets/Images/remove.png')} style={{ width: 23, height: 23, objectFit: 'contain' }} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        ))}
-      </View>
-    </ScrollView>
+          ))}
+        </View>
+      </ScrollView>
+    
   );
 }
 

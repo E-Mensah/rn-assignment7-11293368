@@ -27,7 +27,7 @@ const CheckOutPage = ({ navigation }) => {
             </View>
           </View>
           <View>
-            <Image source={require('../assets/Images/checkOl.png')} style={{ height: 70, width: 220, objectFit: 'contain', alignSelf: 'center', marginBottom: 20 }} />
+            <Image source={require('../assets/Images/checkOl.png')} style={{ height: 70, width: 220, objectFit: 'contain', alignSelf: 'center', marginBottom: 10 }} />
           </View>
           <CheckOutComponent setTotalSum={setTotalSum} />
         </View>
